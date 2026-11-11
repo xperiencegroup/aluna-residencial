@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--color-beige);
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Paleta Senderos de Aluna
+   Base + 4 derivados (1 = mÃ¡s cercano al base, 4 = mÃ¡s claro) */
+@theme {
+  --color-beige: #f2ece1;
+
+  /* Origen */
+  --color-origen: #3c4142;
+  --color-origen-1: #435053;
+  --color-origen-2: #5c686b;
+  --color-origen-3: #8a9699;
+  --color-origen-4: #c7d5d8;
+
+  /* Impulso */
+  --color-impulso: #df7a5f;
+  --color-impulso-1: #da816a;
+  --color-impulso-2: #e5a18f;
+  --color-impulso-3: #f3c7bc;
+  --color-impulso-4: #ffd7cd;
+
+  /* PropÃ³sito */
+  --color-proposito: #166d5c;
+  --color-proposito-1: #297969;
+  --color-proposito-2: #459081;
+  --color-proposito-3: #5fa799;
+  --color-proposito-4: #9cbfb8;
+
+  /* Encuentro */
+  --color-encuentro: #89c38b;
+  --color-encuentro-1: #86cd88;
+  --color-encuentro-2: #97ca99;
+  --color-encuentro-3: #b3d9b4;
+  --color-encuentro-4: #c7e3c8;
+
+  /* Horizonte */
+  --color-horizonte: #daf4af;
+  --color-horizonte-1: #def5b7;
+  --color-horizonte-2: #e4f7c5;
+  --color-horizonte-3: #e8f8ce;
+  --color-horizonte-4: #f0fade;
+}
+
+@layer components {
+  .button {
+    @apply text-[13px] min-[1440px]:text-[14px] min-[1920px]:text-[15px];
+  }
+
+  .hero {
+    @apply text-[48px] leading-[120%] min-[1440px]:text-[56px] min-[1920px]:text-[64px];
+  }
+
+  .hero-2 {
+    @apply text-[38px] leading-[120%] min-[1440px]:text-[44px] min-[1920px]:text-[52px];
+  }
+
+  .subtitle {
+    @apply text-[20px] min-[1440px]:text-[22px] min-[1920px]:text-[24px];
+  }
+
+  .subtitle-caps {
+    @apply text-[20px];
+  }
+
+  .regular {
+    @apply text-[16px] min-[1440px]:text-[18px] min-[1920px]:text-[20px];
+  }
+
+  .modelo-title {
+    @apply text-[35px] min-[1440px]:text-[40px] min-[1920px]:text-[46px];
+  }
+
+  .formulario-input {
+    @apply text-[16px];
+  }
+
+  .caption {
+    @apply text-[11px];
+  }
+
+  .text-icon {
+    @apply text-[14px];
+  }
+}
