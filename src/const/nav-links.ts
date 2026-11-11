@@ -88,19 +88,19 @@ export const SOCIAL_LINKS = [
   {
     id: "instagram",
     title: "Instagram",
-    icon: instagramIcon,
+    Icon: instagramIcon,
     href: "https://www.instagram.com/viveenaluna/",
   },
   {
     id: "whatsapp",
     title: "WhatsApp",
-    icon: whatsappIcon,
+    Icon: whatsappIcon,
     href: "https://wa.me/50230256073",
   },
   {
     id: "facebook",
     title: "Facebook",
-    icon: facebookIcon,
+    Icon: facebookIcon,
     href: "https://www.facebook.com/viveenaluna",
   },
 ];
