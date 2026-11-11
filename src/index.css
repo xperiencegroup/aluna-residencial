@@ -22,7 +22,7 @@ img {
   user-select: none;
 }
 
-/* Paleta Senderos de Aluna
+/* Paleta de Aluna
    Base + 4 derivados (1 = mÃ¡s cercano al base, 4 = mÃ¡s claro) */
 @theme {
   --color-beige: #f2ece1;
