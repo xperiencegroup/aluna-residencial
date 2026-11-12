@@ -10,6 +10,7 @@ import churrasqueras from "@/assets/icons/components/amenidades/churrasqueras-ic
 import FillButton from "@/components/fill-button";
 import PillButton from "@/components/pill-button";
 import DownloadIcon from "@/assets/icons/components/download-icon";
+import { useSearchParams } from "react-router";
 
 type Amenidad = {
   id: string;
@@ -40,10 +41,15 @@ const amenidades: Amenidad[] = [
 
 export default function Amenidades() {
   const [selected, setSelected] = useState(amenidades[0]);
+  const [, setSearchParams] = useSearchParams();
 
   const onSelect = (amenidad: Amenidad) => {
     if (amenidad.id === selected.id) return;
     setSelected(amenidad);
+  };
+
+  const onRecorrido = () => {
+    setSearchParams({ form: "xperience" }, { state: { origen: "brochure" } });
   };
   return (
     <section className="flex w-full justify-center px-6 py-16 sm:px-10 md:px-16 lg:min-h-svh lg:items-center lg:py-20">
@@ -146,7 +152,11 @@ export default function Amenidades() {
         </div>
 
         {/* download brochure */}
-        <FillButton Icon={DownloadIcon} variant="proposito">
+        <FillButton
+          Icon={DownloadIcon}
+          onClick={onRecorrido}
+          variant="proposito"
+        >
           Descargar Brochure
         </FillButton>
       </div>

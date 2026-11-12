@@ -9,16 +9,18 @@ import Modelos from "./home/components/modelos";
 import PlanoConjunto from "./home/components/plano";
 import Ubicacion from "./home/components/ubicacion";
 import { useSearchParams } from "react-router";
+import FormPopup from "@/components/popup/form-popup";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const popup = searchParams.get("popup");
+  const form = searchParams.get("form");
 
-  const cerrarPopup = () => {
+  const cerrar = (param: string) => {
     setSearchParams(
       (prev) => {
         const next = new URLSearchParams(prev);
-        next.delete("popup");
+        next.delete(param);
         return next;
       },
       { replace: true, preventScrollReset: true },
@@ -37,7 +39,11 @@ export default function Home() {
       <Ubicacion />
       <FHA />
 
-      {popup === "plano-conjunto" && <PlanoPopup onClose={cerrarPopup} />}
+      {popup === "plano-conjunto" && (
+        <PlanoPopup onClose={() => cerrar("popup")} />
+      )}
+      {form === "xperience" && <FormPopup onClose={() => cerrar("form")} />}
+      {form === "brochure" && <FormPopup onClose={() => cerrar("form")} />}
     </main>
   );
 }
