@@ -29,6 +29,9 @@ export default function ExploraCX() {
         className="absolute inset-0 w-full h-full object-cover object-right-top scale-150 origin-[60%_20%]"
       />
 
+      {/* overlay */}
+      <div className="lg:hidden absolute w-full h-full inset-0 bg-white/20" />
+
       {/* logo decoration */}
       <img
         src={logoDecoration}
@@ -49,7 +52,7 @@ export default function ExploraCX() {
           </h2>
 
           {/* description */}
-          <p className="regular text-proposito max-lg:[text-shadow:0_1px_6px_rgba(0,0,0,0.45)] w-full max-w-[740px]">
+          <p className="regular text-proposito w-full max-w-[740px]">
             <span className="font-semibold">
               Vive la experiencia antes de mudarte.
             </span>

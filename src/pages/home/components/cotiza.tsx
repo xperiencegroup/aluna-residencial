@@ -39,21 +39,24 @@ export default function Cotiza() {
         </div>
 
         {/* second text */}
-        <div className="relative shrink-0 flex w-full max-xl:max-w-[580px] max-w-[42vw] max-lg:max-w-none max-lg:min-h-0 justify-center items-center">
-          <div className="w-full max-w-[464px]">
-            <h3 className="subtitle font-bold italic text-right text-proposito">
-              Conoce el rango de precios <br /> y opciones de inversión
+        <div className="relative flex w-full items-center justify-center px-6 pb-16 pt-4 sm:px-10 lg:max-w-[580px] lg:shrink-0 lg:px-[30px] lg:py-[34px] xl:max-w-[42vw]">
+          <div className="flex w-full max-w-[464px] flex-col gap-4 text-center text-proposito lg:gap-6 lg:text-right">
+            <h3 className="subtitle font-bold italic text-balance">
+              Conoce el rango de precios <br className="max-lg:hidden" />y
+              opciones de inversión
             </h3>
-            <p className="paragraph text-right text-proposito">
-              <br />
-              Ponemos a tu disposición la información preliminar de precios de
-              cada modelo, así como las condiciones generales para que tengas
-              una idea clara antes de dar el siguiente paso.
-              <br />
-              <br />
-              Nuestros asesores te acompañarán para afinar la propuesta y
-              presentarte un plan adaptado a tus necesidades.
-            </p>
+
+            <div className="paragraph flex flex-col gap-4">
+              <p>
+                Ponemos a tu disposición la información preliminar de precios de
+                cada modelo, así como las condiciones generales para que tengas
+                una idea clara antes de dar el siguiente paso.
+              </p>
+              <p>
+                Nuestros asesores te acompañarán para afinar la propuesta y
+                presentarte un plan adaptado a tus necesidades.
+              </p>
+            </div>
           </div>
         </div>
       </div>
