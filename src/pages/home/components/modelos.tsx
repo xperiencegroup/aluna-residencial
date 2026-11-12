@@ -1,9 +1,13 @@
 import { useSearchParams } from "react-router";
 import ModeloCard from "./modelo-card/modelo-card";
 import { modelos } from "@/data/modelos";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import InfiniteCarousel from "@/components/carousel/infinite-carousel";
 
 export default function Modelos() {
   const [params, setParams] = useSearchParams();
+
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   const abrirModelo = (modelo) => {
     setParams({ modelo: modelo.id });
@@ -40,9 +44,28 @@ export default function Modelos() {
 
       {/* modelos */}
       <div className="relative flex mt-[40px] gap-[8px] xl:gap-[15px] min-[1440px]:gap-[24px] min-[1920px]:gap-[32px]">
-        {modelos.map((modelo) => (
-          <ModeloCard key={modelo.id} modelo={modelo} onOpen={abrirModelo} />
-        ))}
+        {/* models */}
+        {isDesktop ? (
+          <div className="relative flex mt-[40px] gap-[8px] xl:gap-[15px] min-[1440px]:gap-[24px] min-[1920px]:gap-[32px]">
+            {modelos.map((modelo) => (
+              <ModeloCard
+                key={modelo.id}
+                modelo={modelo}
+                onOpen={abrirModelo}
+              />
+            ))}
+          </div>
+        ) : (
+          <InfiniteCarousel
+            paused={params.has("modelo")}
+            className="mt-[24px] self-stretch -mx-[20px] md:-mx-[48px] py-[12px]"
+            items={modelos.map((modelo) => (
+              <div key={modelo.id} className="px-[8px]">
+                <ModeloCard modelo={modelo} onOpen={abrirModelo} />
+              </div>
+            ))}
+          />
+        )}
       </div>
     </section>
   );

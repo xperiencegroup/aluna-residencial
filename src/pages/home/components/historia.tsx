@@ -14,7 +14,7 @@ export default function Historia() {
           <img
             src={backgroundImage}
             alt="Familia jugando futbol"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-[50%_20%]"
           />
         </div>
 
@@ -27,7 +27,7 @@ export default function Historia() {
             </h2>
 
             {/* subtitle */}
-            <p className="paragraph text-left text-proposito max-md:text-[17px]">
+            <p className="paragraph text-left text-proposito max-md:text-[14px]">
               En <span className="font-semibold italic">ALUNA Residencial</span>{" "}
               creemos en una nueva forma de habitar. No solo construimos casas,
               creamos comunidad, estabilidad y patrimonio real en Guatemala.

@@ -81,27 +81,27 @@ img {
   }
 
   .hero {
-    @apply text-[48px] leading-[120%] min-[1440px]:text-[56px] min-[1920px]:text-[64px];
+    @apply text-[32px] leading-[120%] sm:text-[36px] md:text-[42px] lg:text-[48px] min-[1440px]:text-[56px] min-[1920px]:text-[64px];
   }
 
   .hero-2 {
-    @apply text-[38px] leading-[120%] min-[1440px]:text-[44px] min-[1920px]:text-[52px];
+    @apply text-[28px] leading-[120%] sm:text-[30px] md:text-[34px] lg:text-[38px] min-[1440px]:text-[44px] min-[1920px]:text-[52px];
   }
 
   .subtitle {
-    @apply text-[20px] min-[1440px]:text-[22px] min-[1920px]:text-[24px];
+    @apply text-[18px] md:text-[19px] lg:text-[20px] min-[1440px]:text-[22px] min-[1920px]:text-[24px];
   }
 
   .subtitle-caps {
-    @apply text-[20px];
+    @apply text-[17px] sm:text-[18px] md:text-[19px] lg:text-[20px];
   }
 
   .regular {
-    @apply text-[16px] min-[1440px]:text-[18px] min-[1920px]:text-[20px];
+    @apply text-[15px] md:text-[16px] min-[1440px]:text-[18px] min-[1920px]:text-[20px];
   }
 
   .modelo-title {
-    @apply text-[35px] min-[1440px]:text-[40px] min-[1920px]:text-[46px];
+    @apply text-[26px] sm:text-[28px] md:text-[32px] lg:text-[35px] min-[1440px]:text-[40px] min-[1920px]:text-[46px];
   }
 
   .formulario-input {
@@ -131,4 +131,20 @@ img {
     transparent 99.5%,
     var(--color-proposito) 100%
   );
+}
+
+/* EMBLA Carousel */
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-right: 10px;
 }

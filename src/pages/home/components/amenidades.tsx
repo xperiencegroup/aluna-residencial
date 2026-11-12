@@ -46,8 +46,8 @@ export default function Amenidades() {
     setSelected(amenidad);
   };
   return (
-    <section className="flex justify-center items-center w-full min-h-svh gap-[30px]">
-      <div className="flex flex-col items-end w-full max-w-7xl gap-[30px]">
+    <section className="flex w-full justify-center px-6 py-16 sm:px-10 md:px-16 lg:min-h-svh lg:items-center lg:py-20">
+      <div className="flex w-full max-w-7xl flex-col items-start gap-6 lg:items-end lg:gap-[30px]">
         {/* title */}
         <h2 className="hero font-semibold text-proposito">Amenidades</h2>
 
@@ -56,56 +56,90 @@ export default function Amenidades() {
           Disfruta de espacios que inspiran comunidad y bienestar:
         </p>
 
-        {/* buttons */}
-        <div className="flex justify-between w-full max-w-[1180px] gap-[8px]">
-          {amenidades.map((amenidad) => {
-            return (
-              <div key={amenidad.id} className="w-full">
-                <PillButton
-                  Icon={amenidad.Icon}
-                  current={selected.id === amenidad.id}
-                  onClick={() => onSelect(amenidad)}
-                  base="bg-beige border-proposito text-proposito"
-                  className="w-full whitespace-nowrap"
-                >
-                  {amenidad.label}
-                </PillButton>
-              </div>
-            );
-          })}
+        {/* botones sm en adelante */}
+        <ul className="max-sm:hidden flex justify-end flex-wrap gap-2">
+          {amenidades.map((amenidad) => (
+            <li key={amenidad.id} className="max-xl:shrink-0 max-xl:snap-start">
+              <PillButton
+                Icon={amenidad.Icon}
+                current={selected.id === amenidad.id}
+                onClick={() => onSelect(amenidad)}
+                base="bg-beige border-proposito text-proposito"
+                className="w-[200px] whitespace-nowrap"
+              >
+                {amenidad.label}
+              </PillButton>
+            </li>
+          ))}
+        </ul>
+
+        {/* botones mobile */}
+        <div className="flex flex-col items-center gap-3 self-center sm:hidden">
+          <ul className="flex flex-wrap justify-center gap-[6px]">
+            {amenidades.map((amenidad) => {
+              const isSelected = selected.id === amenidad.id;
+
+              return (
+                <li key={amenidad.id}>
+                  <button
+                    type="button"
+                    aria-label={amenidad.label}
+                    aria-pressed={isSelected}
+                    onClick={() => onSelect(amenidad)}
+                    className="group flex size-[45px] items-center justify-center rounded-full border-[1.5px] border-proposito bg-beige drop-shadow transition-colors duration-200 hover:cursor-pointer hover:opacity-80 active:border-horizonte active:bg-proposito active:opacity-100 aria-pressed:border-horizonte aria-pressed:bg-proposito aria-pressed:opacity-100"
+                  >
+                    {amenidad.Icon && (
+                      <amenidad.Icon
+                        aria-hidden="true"
+                        className="h-fit w-[23px] text-proposito group-active:text-horizonte group-aria-pressed:text-horizonte"
+                      />
+                    )}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
         {/* images */}
-        <div className="flex w-full max-w-[1220px] gap-[22px]">
+        <div className="grid w-full max-w-[1220px] gap-4 lg:grid-cols-[637fr_560fr] lg:gap-[22px]">
           {/* imagen mas grande */}
-          <div className="relative w-[637px] h-[403px] rounded-tl-[280px] bg-red-400 overflow-hidden">
+          <div className="relative aspect-[637/403] w-full overflow-hidden rounded-tl-[120px] bg-red-400 md:rounded-tl-[200px] lg:rounded-tl-[280px]">
             <img
               src=""
               alt=""
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
 
           {/* imagenes pequeñas */}
-          <div className="flex flex-col w-[560px] h-[430px] gap-[16px]">
-            <div className="relative w-full h-[174px] bg-cyan-500">
-              {/* imagen mediana */}
+          <div className="grid gap-4 lg:grid-rows-[174fr_213fr]">
+            {/* imagen mediana */}
+            <div className="relative aspect-[16/7] w-full overflow-hidden bg-cyan-500 lg:aspect-auto">
               <img
                 src=""
                 alt=""
-                className="absolute w-full h-full inset-0 object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
 
-            <div className="flex w-full gap-[16px]">
+            <div className="grid grid-cols-2 gap-4">
               {/* imagen pequeña 1 */}
-              <div className="relative w-[272px] h-[213px] bg-green-700">
-                <img src="" alt="" className="absolute inset-0 w-full h-full" />
+              <div className="relative aspect-[272/213] overflow-hidden bg-green-700 lg:aspect-auto">
+                <img
+                  src=""
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
               </div>
 
               {/* imagen pequeña 2 */}
-              <div className="relative w-[272px] h-[213px] bg-green-900">
-                <img src="" alt="" className="absolute inset-0 w-full h-full" />
+              <div className="relative aspect-[272/213] overflow-hidden bg-green-900 lg:aspect-auto">
+                <img
+                  src=""
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
               </div>
             </div>
           </div>

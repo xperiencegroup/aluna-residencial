@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router";
 // horizontal
 import masterplanImageH from "@/assets/images/plano-conjunto.png";
 // vertical
-// import masterplanImageV from "@/assets/images/materplan-background-v.jpg";
+import masterplanImageV from "@/assets/images/plano-conjunto-vertical.png";
 
 import formaBackground from "@/assets/images/forma-plano-conjunto.svg";
 import ClickIcon from "@/assets/icons/components/click-icon";
@@ -23,9 +23,9 @@ export default function PlanoConjunto() {
     <section className="flex flex-col justify-center items-center min-h-svh w-full bg-beige">
       {/* explora plano de conjunto */}
       <div className="relative flex w-full h-full justify-center items-center">
-        <div className="relative flex w-full justify-center items-center max-w-[1280px] min-h-[340px]">
+        <div className="relative flex w-full max-w-[1280px] min-h-svh flex-col items-center justify-center gap-8 py-12 lg:min-h-[340px] lg:flex-row lg:py-0">
           {/* text */}
-          <div className="flex flex-col justify-center items-center text-center gap-[13px]">
+          <div className="flex flex-col items-center justify-center gap-[13px] text-center lg:shrink-0">
             <p className="subtitle text-proposito uppercase">
               <span className="font-bold italic">Explora aquí</span> los
               detalles del <br />
@@ -43,62 +43,72 @@ export default function PlanoConjunto() {
           </div>
 
           {/* image */}
-          <div className="relative w-[825px] h-[275px]">
+          <div className="relative h-[60svh] w-[20svh] lg:h-auto lg:w-full lg:max-w-[825px] lg:aspect-[3/1]">
             <img
               src={masterplanImageH}
               alt="Plano de conjunto"
-              className="absolute inset-0 w-full h-full object-contain"
+              className="max-lg:hidden absolute inset-0 w-full h-full object-contain"
+            />
+            <img
+              src={masterplanImageV}
+              alt="Plano de conjunto"
+              className="lg:hidden absolute inset-0 w-full h-full object-contain"
             />
           </div>
         </div>
 
-        <div className="absolute bottom-[-1px] left-0 size-[260px] curva" />
+        <div className="absolute bottom-[-1px] left-0 size-[100px] lg:size-[180px] xl:size-[260px] curva" />
       </div>
 
       {/* registrate y recorrido virtual */}
-      <div className="relative flex justify-center items-center w-full min-h-[428px] rounded-tr-[80px]">
+      <div className="relative flex w-full min-h-[428px] items-center justify-center rounded-tr-[40px] px-6 py-16 max-lg:bg-proposito sm:rounded-tr-[60px] sm:px-10 md:px-16 lg:rounded-tr-[80px] lg:py-20">
         {/* forma */}
-        <img src={formaBackground} className="absolute inset-0 w-full h-full" />
+        <img
+          src={formaBackground}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 h-full w-full select-none max-lg:hidden"
+        />
 
-        {/*  texts and button */}
-        <div className="relative flex flex-col w-full h-full text-center gap-[50px] text-beige">
-          <div className="flex flex-col gap-[20px]">
-            <h2 className="hero-2 font-semibold">
+        {/* texts and button */}
+        <div className="relative flex w-full max-w-[720px] flex-col items-center gap-8 text-center text-beige md:gap-10 lg:gap-[50px]">
+          <div className="flex flex-col gap-4 lg:gap-[20px]">
+            <h2 className="hero-2 font-semibold text-balance">
               Regístrate y conoce{" "}
               <span className="font-extrabold italic">
                 los detalles del plano de conjunto
               </span>
             </h2>
 
-            <p className="paragraph text-center">
-              Un desarrollo residencial en Villa Nueva, Guatemala con una
-              propuesta de vivienda horizontal dentro de condominio, <br />{" "}
-              seguridad 24/7 y áreas verdes que invitan a la convivencia.
-              <br />
-              <br />
-              El proyecto está conformado por 164 lotes y 3 modelos de casas que
-              se adaptan a distintos estilos de vida.
-              <br />
-              <br />
-              Disfruta de amenidades diseñadas para toda la familia y un entorno
-              pensado para crecer, vivir y disfrutar.
-            </p>
+            <div className="paragraph mx-auto flex max-w-[60ch] flex-col gap-4">
+              <p>
+                Un desarrollo residencial en Villa Nueva, Guatemala con una
+                propuesta de vivienda horizontal dentro de condominio, seguridad
+                24/7 y áreas verdes que invitan a la convivencia.
+              </p>
+              <p>
+                El proyecto está conformado por 164 lotes y 3 modelos de casas
+                que se adaptan a distintos estilos de vida.
+              </p>
+              <p>
+                Disfruta de amenidades diseñadas para toda la familia y un
+                entorno pensado para crecer, vivir y disfrutar.
+              </p>
+            </div>
           </div>
 
           {/* button */}
-          <div>
-            <FillButton
-              Icon={ClickIcon}
-              gap={15}
-              onClick={onRecorrido}
-              variant="proposito"
-            >
-              <span className="flex items-center justify-center gap-[15px]">
-                <AlunaIcon className="size-[20px]" aria-hidden="true" />
-                <span>Iniciar Recorrido Virtual</span>
-              </span>
-            </FillButton>
-          </div>
+          <FillButton
+            Icon={ClickIcon}
+            gap={15}
+            onClick={onRecorrido}
+            variant="proposito"
+          >
+            <span className="flex items-center justify-center gap-[15px]">
+              <AlunaIcon className="size-[20px]" aria-hidden="true" />
+              <span>Iniciar Recorrido Virtual</span>
+            </span>
+          </FillButton>
         </div>
       </div>
     </section>

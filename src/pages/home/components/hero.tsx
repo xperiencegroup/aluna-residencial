@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex h-full min-h-[768px] h-svh max-lg:flex-col max-lg:h-auto max-lg:min-h-0"
+      className="relative flex h-full min-h-[768px] h-svh max-lg:flex-col max-lg:h-auto max-lg:min-h-0 bg-proposito"
     >
       {/* Fondo */}
       <img
