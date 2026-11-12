@@ -1,3 +1,4 @@
+import PlanoPopup from "@/components/popup/plano-popup";
 import Amenidades from "./home/components/amenidades";
 import Cotiza from "./home/components/cotiza";
 import ExploraCX from "./home/components/explora-cx";
@@ -7,8 +8,23 @@ import Historia from "./home/components/historia";
 import Modelos from "./home/components/modelos";
 import PlanoConjunto from "./home/components/plano";
 import Ubicacion from "./home/components/ubicacion";
+import { useSearchParams } from "react-router";
 
 export default function Home() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const popup = searchParams.get("popup");
+
+  const cerrarPopup = () => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete("popup");
+        return next;
+      },
+      { replace: true, preventScrollReset: true },
+    );
+  };
+
   return (
     <main>
       <Hero />
@@ -20,6 +36,8 @@ export default function Home() {
       <Cotiza />
       <Ubicacion />
       <FHA />
+
+      {popup === "plano-conjunto" && <PlanoPopup onClose={cerrarPopup} />}
     </main>
   );
 }

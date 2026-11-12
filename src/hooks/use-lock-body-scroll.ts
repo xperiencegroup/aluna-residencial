@@ -1,21 +1,38 @@
 import { useEffect } from "react";
 
-/** Bloquea el scroll de la página mientras `locked` sea true */
+let locks = 0;
+let prevHtmlOverflow = "";
+let prevBodyOverflow = "";
+let prevBodyPaddingRight = "";
+
 export function useLockBodyScroll(locked = true) {
   useEffect(() => {
     if (!locked) return;
 
-    const html = document.documentElement;
-    const { overflow, paddingRight } = html.style;
-    // Evita el "salto" del layout al desaparecer la barra de scroll
-    const scrollbar = window.innerWidth - html.clientWidth;
+    const { body, documentElement: html } = document;
 
-    html.style.overflow = "hidden";
-    if (scrollbar > 0) html.style.paddingRight = `${scrollbar}px`;
+    if (locks === 0) {
+      const scrollbarWidth = window.innerWidth - html.clientWidth;
+
+      prevHtmlOverflow = html.style.overflow;
+      prevBodyOverflow = body.style.overflow;
+      prevBodyPaddingRight = body.style.paddingRight;
+
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+      if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    locks++;
 
     return () => {
-      html.style.overflow = overflow;
-      html.style.paddingRight = paddingRight;
+      locks--;
+
+      if (locks === 0) {
+        html.style.overflow = prevHtmlOverflow;
+        body.style.overflow = prevBodyOverflow;
+        body.style.paddingRight = prevBodyPaddingRight;
+      }
     };
   }, [locked]);
 }

@@ -19,6 +19,10 @@ export default function PlanoConjunto() {
     setSearchParams({ form: "xperience" }, { state: { origen: "plano" } });
   };
 
+  const handleClickPlanoConjunto = () => {
+    setSearchParams({ popup: "plano-conjunto" });
+  };
+
   return (
     <section className="flex flex-col justify-center items-center min-h-svh w-full bg-beige">
       {/* explora plano de conjunto */}
@@ -35,6 +39,7 @@ export default function PlanoConjunto() {
             {/* button */}
             <PillButton
               Icon={PlanoIcon}
+              onClick={handleClickPlanoConjunto}
               base="bg-beige border-proposito text-proposito"
               className="w-[204px]"
             >
