@@ -123,3 +123,11 @@ img {
 .drop-shadow {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
+
+.curva {
+  background: radial-gradient(
+    100% 100% at 100% 0,
+    transparent 99.5%,
+    var(--color-proposito) 100%
+  );
+}
