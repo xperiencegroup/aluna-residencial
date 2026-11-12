@@ -5,6 +5,7 @@ import Hero from "./home/components/hero";
 import Historia from "./home/components/historia";
 import Modelos from "./home/components/modelos";
 import PlanoConjunto from "./home/components/plano";
+import Ubicacion from "./home/components/ubicacion";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Modelos />
       <ExploraCX />
       <Cotiza />
+      <Ubicacion />
     </main>
   );
 }
