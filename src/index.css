@@ -114,6 +114,10 @@ img {
   .text-icon {
     @apply text-[14px];
   }
+
+  .paragraph {
+    @apply text-[14px] leading-[150%] min-[1440px]:text-[15px] min-[1920px]:text-[16px];
+  }
 }
 
 .drop-shadow {
