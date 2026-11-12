@@ -1,4 +1,5 @@
 import Amenidades from "./home/components/amenidades";
+import ExploraCX from "./home/components/explora-cx";
 import Hero from "./home/components/hero";
 import Historia from "./home/components/historia";
 import Modelos from "./home/components/modelos";
@@ -12,6 +13,7 @@ export default function Home() {
       <PlanoConjunto />
       <Amenidades />
       <Modelos />
+      <ExploraCX />
     </main>
   );
 }
