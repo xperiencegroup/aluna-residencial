@@ -26,7 +26,7 @@ export default function FHA() {
           {/* text */}
           <p className="w-full max-w-[766px] min-[1440px]:max-w-[1000px] min-[1920px]:max-w-[1150px] subtitle text-center text-encuentro max-md:text-[16px]">
             La calidad de urbanización y construcción de{" "}
-            <span className="font-bold italic">Senderos de ALUNA</span> está{" "}
+            <span className="font-bold italic">ALUNA Residencial</span> está{" "}
             <span className="font-bold italic">respaldada</span> por el sello de
             confianza de FHA
             <br className="max-lg:hidden" />

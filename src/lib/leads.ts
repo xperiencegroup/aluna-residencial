@@ -5,7 +5,7 @@
  * así los componentes no cambian cuando se conecte el backend.
  */
 import type { DatosLead } from "@/types/xperience-form";
-// import folletoPdf from "@/assets/fichas/Senderos de Aluna _ Brochure comercial.pdf";
+// import folletoPdf from "@/assets/fichas/Aluna _ Brochure comercial.pdf";
 
 /** Apagar mientras se configura HubSpot: los formularios no se abren. */
 export const FORMULARIOS_ACTIVOS = true;

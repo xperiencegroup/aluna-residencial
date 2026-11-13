@@ -87,7 +87,7 @@ export default function FormPopup({ onClose }: FormPopupProps) {
             <div className="relative flex h-full w-full flex-col justify-end short:gap-[32px] max-lg:gap-[12px] lg:gap-[40px] xl:gap-[78px] short:pb-[32px] max-lg:pb-[20px] pb-[20px] lg:pl-[14px] xl:pl-[48px] max-lg:pl-[20px] md:max-lg:pl-[48px]">
               <img
                 src={isotipo}
-                alt="Isotipo Senderos de Aluna"
+                alt="Isotipo Aluna Residencial"
                 className="absolute top-[55px] h-[75px] w-[38px] max-lg:top-[20px] max-lg:h-auto max-lg:w-[26px]"
               />
 
@@ -105,7 +105,7 @@ export default function FormPopup({ onClose }: FormPopupProps) {
 
                 <p className="subtitle text-proposito max-lg:hidden">
                   Cuéntanos un poco de ti y{" "}
-                  <span className="font-bold italic">Senderos de Aluna</span> se
+                  <span className="font-bold italic">Aluna Residencial</span> se
                   adapta; modelos, planes y espacios pensados para tu familia
                 </p>
               </div>

@@ -31,7 +31,7 @@ export default function ExploraCX() {
       {/* bg image */}
       <img
         src={imageBackground}
-        alt="Interior modelo Senderos de Aluna"
+        alt="Interior modelo Aluna Residencial"
         className="absolute inset-0 w-full h-full object-cover object-right-top scale-150 origin-[60%_20%]"
       />
 

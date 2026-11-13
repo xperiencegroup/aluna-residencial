@@ -71,7 +71,7 @@ export default function Ubicacion() {
 
           {/* description */}
           <p className="w-full max-w-[422px] min-[1440px]:max-w-[560px] max-lg:max-w-none regular text-proposito">
-            <span className="font-semibold italic">Senderos de ALUNA</span> es
+            <span className="font-semibold italic">ALUNA Residencial</span> es
             un proyecto de{" "}
             <span className="font-semibold italic">Grupo MR2,</span> una empresa
             familiar consolidada con más de 50 años de trayectoria en el sector

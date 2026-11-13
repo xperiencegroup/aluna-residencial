@@ -1,6 +1,6 @@
 import heroBg from "@/assets/images/hero-background.jpg";
 import formaAluna from "@/assets/images/fondo-forma-hero.svg";
-import senderosLogo from "@/assets/logos/main/logo_and_name_encuentro.svg";
+import logo from "@/assets/logos/main/logo_and_name_encuentro.svg";
 
 /*
  * Móvil (< lg): la foto pasa a ser un banner arriba (con esquina
@@ -16,7 +16,7 @@ export default function Hero() {
       {/* Fondo */}
       <img
         src={heroBg}
-        alt="Imagen de Senderos de Aluna"
+        alt="Imagen de Aluna Residencial"
         className="absolute inset-0 z-0 h-full w-full object-cover max-lg:relative max-lg:inset-auto max-lg:mt-[74px] max-lg:h-[42svh] max-lg:min-h-[260px] max-lg:rounded-br-[100px]"
       />
 
@@ -33,8 +33,8 @@ export default function Hero() {
       {/* content */}
       <div className="absolute z-10 left-[5%] top-1/2 -translate-y-1/2 flex flex-col gap-[30px] max-lg:static max-lg:translate-y-0 max-lg:gap-[32px] max-lg:px-[20px] max-lg:pt-[40px] max-lg:pb-[56px] md:max-lg:px-[48px]">
         <img
-          src={senderosLogo}
-          alt="Logo Senderos de Aluna"
+          src={logo}
+          alt="Logo Aluna Residencial"
           className="w-full max-md:max-w-[240px] max-w-[322px]"
         />
 
