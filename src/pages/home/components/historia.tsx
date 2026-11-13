@@ -5,7 +5,7 @@ import backgroundImage from "@/assets/images/historia-background.jpg";
 export default function Historia() {
   return (
     <div
-      id="cotizador"
+      id="nosotros"
       className="relative w-full min-h-svh overflow-hidden max-lg:min-h-0"
     >
       <div className="flex max-lg:flex-col max-lg:gap-0">

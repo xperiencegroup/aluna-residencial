@@ -24,7 +24,10 @@ export default function PlanoConjunto() {
   };
 
   return (
-    <section className="flex flex-col justify-center items-center min-h-svh w-full bg-beige">
+    <section
+      id="plano"
+      className="flex flex-col justify-center items-center min-h-svh w-full bg-beige"
+    >
       {/* explora plano de conjunto */}
       <div className="relative flex w-full h-full justify-center items-center lg:grow">
         <div className="relative flex w-full max-w-[1280px] lg:min-h-[340px] min-h-svh flex-col items-center justify-center gap-8 py-12 lg:flex-row lg:py-0">

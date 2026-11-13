@@ -5,6 +5,7 @@ export default function FHA() {
   return (
     <div className="flex w-full justify-center portrait:min-h-[max(100svh,800px)] bg-proposito overflow-hidden max-lg:rounded-tr-[120px]">
       {/* El alto de la sección lo define la figura */}
+      {/* NAT PIDIÓ CAMBIAR A [50svh] pero la imagen no lo permite porque está mal cortada o en figma no aparece completa */}
       <div className="flex w-full max-w-[1366px] min-[1440px]:max-w-[1700px] min-[1920px]:max-w-[88vw] landscape:h-[360px] min-[1440px]:h-[440px] min-[1920px]:h-[520px] items-center gap-[30px] lg:gap-[60px] min-[1920px]:gap-[100px] px-[84px] max-lg:flex-col max-lg:min-h-svh max-lg:px-[20px] max-lg:py-[48px] md:max-lg:px-[48px]">
         {/* image */}
         <img

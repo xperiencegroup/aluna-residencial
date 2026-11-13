@@ -23,7 +23,10 @@ export default function Amenidades() {
     setSearchParams({ form: "xperience" }, { state: { origen: "brochure" } });
   };
   return (
-    <section className="flex w-full justify-center px-6 py-16 sm:px-10 md:px-16 lg:min-h-svh lg:items-center lg:py-20">
+    <section
+      id="amenidades"
+      className="flex w-full justify-center px-6 py-16 sm:px-10 md:px-16 lg:min-h-svh lg:items-center lg:py-20"
+    >
       <div className="flex w-full max-w-7xl flex-col items-start gap-6 lg:items-end lg:gap-[30px]">
         {/* title */}
         <h2 className="hero font-semibold text-proposito">Amenidades</h2>
