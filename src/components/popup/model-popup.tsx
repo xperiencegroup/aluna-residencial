@@ -13,22 +13,9 @@ interface ModelPopupProps {
 
 export default function ModelPopup({ modelo, onClose }: ModelPopupProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
+
+  // bloquea el scroll del body mientras el popup está abierto
   useLockBodyScroll();
-
-  // Bloquea el scroll del body mientras el popup está abierto
-  useEffect(() => {
-    const { overflow, paddingRight } = document.body.style;
-    // evita el "salto" del layout al desaparecer la barra de scroll
-    const scrollbar = window.innerWidth - document.documentElement.clientWidth;
-
-    document.body.style.overflow = "hidden";
-    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
-
-    return () => {
-      document.body.style.overflow = overflow;
-      document.body.style.paddingRight = paddingRight;
-    };
-  }, []);
 
   // Escape cierra + el foco entra al popup y vuelve al elemento previo al cerrar
   useEffect(() => {
@@ -47,107 +34,82 @@ export default function ModelPopup({ modelo, onClose }: ModelPopupProps) {
   }, [onClose]);
 
   return (
-    /* overlay: clic fuera del panel cierra. En < lg el panel ocupa toda la pantalla */
+    /* overlay: clic fuera del panel cierra */
     <div
       role="dialog"
       aria-modal="true"
       aria-labelledby="model-popup-title"
-      className="fixed inset-0 z-[100] flex justify-center items-center p-[32px] min-[1920px]:p-[48px] bg-black/50 backdrop-blur-[2px] max-lg:p-0"
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 backdrop-blur-[2px] sm:p-6 lg:p-[32px] min-[1920px]:p-[48px]"
     >
-      {/* close button < 1024px: esquina superior derecha del panel */}
-      <button
-        ref={closeRef}
-        onClick={onClose}
-        aria-label="Cerrar"
-        className="lg:hidden group absolute right-[24px] top-[24px] max-md:fixed max-md:right-[16px] max-md:top-[16px] z-10 flex size-[44px] min-[1440px]:size-[52px] justify-center items-center bg-proposito border-2 border-horizonte drop-shadow rounded-full transition-colors duration-100 hover:cursor-pointer hover:opacity-60 active:opacity-100 active:bg-horizonte active:border-proposito"
-      >
-        <CloseIcon className="size-[20px] min-[1440px]:size-[24px] text-horizonte group-active:text-proposito" />
-      </button>
-
       {/* panel */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative flex items-center w-full max-w-[1366px] min-[1440px]:max-w-[1500px] min-[1920px]:max-w-[1700px] max-h-full max-lg:overflow-y-auto max-lg:overscroll-contain bg-encuentro px-[30px] min-[1440px]:px-[72px] py-[min(48px,5svh)] drop-shadow-xl max-lg:h-full max-lg:max-h-none max-lg:items-start max-lg:px-[20px] max-lg:pt-[72px] max-lg:pb-[48px] md:max-lg:px-[48px]"
+        className="relative flex max-h-full w-full max-w-[560px] flex-col overflow-hidden bg-encuentro drop-shadow-xl lg:max-w-[1366px] min-[1440px]:max-w-[1500px] min-[1920px]:max-w-[1700px]"
       >
-        {/* close button > 1024px: esquina superior derecha del panel */}
+        {/* cerrar: fuera del área con scroll para que siempre esté visible */}
         <button
           ref={closeRef}
+          type="button"
           onClick={onClose}
           aria-label="Cerrar"
-          className="max-lg:hidden group absolute right-[24px] top-[24px] max-md:fixed max-md:right-[16px] max-md:top-[16px] z-10 flex size-[44px] min-[1440px]:size-[52px] justify-center items-center bg-proposito border-2 border-horizonte drop-shadow rounded-full transition-colors duration-100 hover:cursor-pointer hover:opacity-60 active:opacity-100 active:bg-horizonte active:border-proposito"
+          className="group absolute right-3 top-3 z-10 flex size-[44px] items-center justify-center rounded-full border-2 border-horizonte bg-proposito drop-shadow transition-colors duration-100 hover:cursor-pointer hover:opacity-60 active:border-proposito active:bg-horizonte active:opacity-100 sm:right-4 sm:top-4 lg:right-[24px] lg:top-[24px] min-[1440px]:size-[52px]"
         >
-          <CloseIcon className="size-[20px] min-[1440px]:size-[24px] text-horizonte group-active:text-proposito" />
+          <CloseIcon className="size-[20px] text-horizonte group-active:text-proposito min-[1440px]:size-[24px]" />
         </button>
 
-        {/* content */}
-        <div className="flex w-full justify-between items-center gap-[30px] max-lg:flex-col max-lg:items-stretch">
-          <div className="w-[445px] h-[738px]">
-            <ImageCarousel
-              className="h-full"
-              label={`Plantas del ${modelo.label}`}
-              images={modelo.niveles.map((nivel) => ({
-                src: nivel.plano,
-                alt: `Planta del ${nivel.titulo.toLowerCase()} del ${modelo.label}`,
-              }))}
-            />
-          </div>
-
-          {/* lista de carateristicas */}
-          <div className="grow flex flex-col gap-[20px] text-proposito">
-            {/* title */}
-            <h3 className="hero font-semibold">{modelo.modalLabel}</h3>
-
-            {/* description */}
-            <p className="regular">{modelo.descripcion}</p>
-
-            {/* primer nivel */}
-            <div className="flex flex-col gap-[5px]">
-              <h4 className="subtitle font-bold italic">Primer Nivel</h4>
-              <ul className="flex flex-col gap-[5px]">
-                {modelo.niveles[0].espacios.map((item, index) => {
-                  return (
-                    <li key={index} className="flex items-center gap-[10px]">
-                      {/* icon */}
-                      <div className="relative flex justify-center items-center size-[40px] bg-proposito rounded-full">
-                        <div className="size-[22px] relative">
-                          <img
-                            src={item.icon}
-                            className="absolute inset-0 w-full h-full object-contain"
-                          />
-                        </div>
-                      </div>
-
-                      {/* text */}
-                      <p>{item.label}</p>
-                    </li>
-                  );
-                })}
-              </ul>
+        {/* área con scroll */}
+        <div className="overflow-y-auto overscroll-contain px-5 pb-8 pt-[72px] sm:px-8 lg:px-[30px] lg:py-[min(48px,5svh)] min-[1440px]:px-[72px]">
+          {/* content */}
+          <div className="flex w-full flex-col items-center gap-8 lg:flex-row lg:justify-between lg:gap-[30px]">
+            {/* plantas */}
+            <div className="aspect-[445/738] w-full max-w-[400px] shrink-0 lg:h-[min(738px,calc(100svh-160px))] lg:w-auto lg:max-w-none">
+              <ImageCarousel
+                key={modelo.id}
+                className="h-full"
+                label={`Plantas del ${modelo.label}`}
+                images={modelo.niveles.map((nivel) => ({
+                  src: nivel.plano,
+                  alt: `Planta del ${nivel.titulo.toLowerCase()} del ${modelo.label}`,
+                }))}
+              />
             </div>
 
-            {/* segundo nivel */}
-            <div className="flex flex-col gap-[5px]">
-              <h4 className="subtitle font-bold italic">Segundo Nivel</h4>
-              <ul className="flex flex-col gap-[5px]">
-                {modelo.niveles[1].espacios.map((item, index) => {
-                  return (
-                    <li key={index} className="flex items-center gap-[10px]">
-                      {/* icon */}
-                      <div className="relative flex justify-center items-center size-[40px] bg-proposito rounded-full">
-                        <div className="size-[22px] relative">
+            {/* lista de características */}
+            <div className="flex w-full grow flex-col gap-[20px] text-proposito">
+              {/* title */}
+              <h3 id="model-popup-title" className="hero font-semibold">
+                {modelo.modalLabel}
+              </h3>
+
+              {/* description */}
+              <p className="regular">{modelo.descripcion}</p>
+
+              {/* niveles */}
+              {modelo.niveles.map((nivel) => (
+                <div key={nivel.titulo} className="flex flex-col gap-[5px]">
+                  <h4 className="subtitle font-bold italic">{nivel.titulo}</h4>
+
+                  <ul className="flex flex-col gap-[5px]">
+                    {nivel.espacios.map((item, index) => (
+                      <li key={index} className="flex items-center gap-[10px]">
+                        {/* icon */}
+                        <span className="flex size-[40px] shrink-0 items-center justify-center rounded-full bg-proposito">
                           <img
                             src={item.icon}
-                            className="absolute inset-0 w-full h-full object-contain"
+                            alt=""
+                            aria-hidden="true"
+                            className="size-[22px] object-contain"
                           />
-                        </div>
-                      </div>
+                        </span>
 
-                      {/* text */}
-                      <p>{item.label}</p>
-                    </li>
-                  );
-                })}
-              </ul>
+                        {/* text */}
+                        <span>{item.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </div>
