@@ -7,12 +7,12 @@ import lavanderiaIcon from "@/assets/icons/modelo/lavanderia.svg";
 import salaIcon from "@/assets/icons/modelo/sala.svg";
 
 // plantas
-import A70P1 from "@/assets/images/modelos/70/ALUNA-70-PLANTA-01.jpg";
-import A70P2 from "@/assets/images/modelos/70/ALUNA-70-PLANTA-02.jpg";
-import A90P1 from "@/assets/images/modelos/90/ALUNA-90-PLANTA-01.jpg";
-import A90P2 from "@/assets/images/modelos/90/ALUNA-90-PLANTA-02.jpg";
-import A100P1 from "@/assets/images/modelos/100/ALUNA-100-PLANTA-01.jpg";
-import A100P2 from "@/assets/images/modelos/100/ALUNA-100-PLANTA-02.jpg";
+import A70P1 from "@/assets/images/modelos/70/ALUNA-70-PLANTA-01.png";
+import A70P2 from "@/assets/images/modelos/70/ALUNA-70-PLANTA-02.png";
+import A90P1 from "@/assets/images/modelos/90/ALUNA-90-PLANTA-01.png";
+import A90P2 from "@/assets/images/modelos/90/ALUNA-90-PLANTA-02.png";
+import A100P1 from "@/assets/images/modelos/100/ALUNA-100-PLANTA-01.png";
+import A100P2 from "@/assets/images/modelos/100/ALUNA-100-PLANTA-02.png";
 
 export type Espacio = {
   icon: string;
