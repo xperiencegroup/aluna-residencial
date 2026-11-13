@@ -10,7 +10,7 @@ import "intl-tel-input/styles";
 
 /* Clases compartidas por los formularios nuevos (mismo estilo que el de cotización) */
 export const inputClass = `w-full py-[20px] max-md:py-[16px] short:py-[12px] pl-[55px] pr-[20px] rounded-[10px]
-  border border-proposito bg-white text-origen placeholder:text-proposito
+  border border-proposito bg-[#E1F1DC] text-origen placeholder:text-proposito
   formulario-input italic outline-none transition-colors duration-200
   focus:border-proposito aria-[invalid=true]:border-red-500/50`;
 
@@ -80,7 +80,7 @@ export function Field({
 
 /* Teléfono con intl-tel-input (igual que la app CX). Guarda el número en E.164. */
 const phoneInputClass = `w-full py-[20px] max-md:py-[16px] short:py-[12px] pr-[20px] rounded-[10px]
-  border border-origen/50 bg-white text-origen placeholder:text-origen
+  border border-proposito bg-[#E1F1DC] text-origen placeholder:text-origen
   formulario-input italic outline-none transition-colors duration-200
   focus:border-proposito aria-[invalid=true]:border-red-500/50`;
 
@@ -109,13 +109,13 @@ export function PhoneField<T extends FieldValues>({
   });
 
   return (
-    <div className="flex flex-col gap-[8px] short:gap-[4px]">
+    <div className="flex flex-col w-full gap-[8px] short:gap-[4px]">
       {label && (
         <label htmlFor={id} className="regular text-origen">
           {label}
         </label>
       )}
-      <div className="relative">
+      <div className="relative w-full">
         <IntlTelInput
           onChangeNumber={(n: string) => field.onChange(n)}
           onChangeValidity={(v: boolean) => {

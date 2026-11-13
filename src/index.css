@@ -148,3 +148,8 @@ img {
   min-width: 0;
   padding-right: 10px;
 }
+
+/* intl-tel-input: ancho completo dentro de los formularios */
+.iti {
+  width: 100%;
+}

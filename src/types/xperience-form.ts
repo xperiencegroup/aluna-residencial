@@ -1,6 +1,3 @@
-/** Pasos del onboarding (el paso 0 es la pantalla de entrada) */
-export const STEPS = ["Tus datos", "Interés", "Confirmación"] as const;
-
 /** Estado completo del formulario (versión previa, se conserva) */
 export type XperienceData = {
   nombre: string;

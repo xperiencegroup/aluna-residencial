@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLockBodyScroll } from "@/hooks/use-lock-body-scroll";
-import imageBackground from "@/assets/images/hero-background.jpg";
+import imageBackground from "@/assets/images/form-background.jpg";
 import formaImage from "@/assets/images/fondo-forma-hero-encuentro.svg";
 import isotipo from "@/assets/logos/main/isotipo.svg";
 import XperienceForm from "../forms/xperience-form";
@@ -38,9 +38,9 @@ export default function FormPopup({ onClose }: FormPopupProps) {
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
-      className="fixed inset-0 m-auto size-full max-h-none max-w-none overflow-hidden overscroll-contain bg-encuentro p-0 backdrop:bg-black/60 backdrop:backdrop-blur-sm lg:aspect-[16/9] lg:h-auto lg:w-[min(92vw,1280px,calc(90svh*16/9))]"
+      className="fixed inset-0 m-auto size-full max-h-none max-w-none overflow-hidden overscroll-contain bg-encuentro p-0 backdrop:bg-black/60 backdrop:backdrop-blur-sm lg:aspect-[16/9] lg:h-auto lg:w-[min(96vw,1440px,calc(94svh*16/9))] lg:overflow-visible"
     >
-      <div className="relative flex h-full w-full flex-col overflow-y-auto overscroll-contain">
+      <div className="relative flex h-full w-full flex-col overflow-y-auto overscroll-contain lg:overflow-visible">
         {/* título solo para lectores de pantalla; cuando el formulario tenga
             su título visible, ponle este id y borra este h2 */}
         <h2 id="xperience-popup-title" className="sr-only">
@@ -68,9 +68,9 @@ export default function FormPopup({ onClose }: FormPopupProps) {
         </button>
 
         {/* contenido */}
-        <div className="flex w-full flex-1 max-lg:min-h-full max-lg:flex-col">
+        <div className="flex w-full flex-1 max-lg:min-h-full max-lg:flex-col lg:overflow-hidden">
           {/* cuadro fijo */}
-          <div className="relative flex-11 shrink-0 overflow-hidden rounded-br-[200px] max-lg:h-[240px] max-lg:flex-none max-lg:rounded-br-[100px]">
+          <div className="relative flex-10 shrink-0 overflow-hidden rounded-br-[200px] max-lg:h-[240px] max-lg:flex-none max-lg:rounded-br-[100px]">
             {/* fondo */}
             <div className="absolute inset-0">
               <img
@@ -85,7 +85,7 @@ export default function FormPopup({ onClose }: FormPopupProps) {
                 src={formaImage}
                 alt=""
                 aria-hidden="true"
-                className="absolute h-full w-full object-fill pr-[40px] max-lg:hidden"
+                className="absolute h-full w-full object-fill pr-[20px] max-lg:hidden"
               />
 
               {/* velo para legibilidad en móvil (sin la forma) */}
@@ -93,7 +93,7 @@ export default function FormPopup({ onClose }: FormPopupProps) {
             </div>
 
             {/* contenido */}
-            <div className="relative flex h-full w-full flex-col justify-end gap-[78px] pb-[60px] pl-[30px] short:gap-[32px] short:pb-[32px] max-lg:gap-[12px] max-lg:pb-[24px] max-lg:pl-[20px] md:max-lg:pl-[48px]">
+            <div className="relative flex h-full w-full flex-col justify-end short:gap-[32px] max-lg:gap-[12px] lg:gap-[40px] xl:gap-[78px] short:pb-[32px] max-lg:pb-[20px] pb-[20px] lg:pl-[14px] xl:pl-[48px] max-lg:pl-[20px] md:max-lg:pl-[48px]">
               <img
                 src={isotipo}
                 alt="Isotipo Senderos de Aluna"
@@ -122,7 +122,7 @@ export default function FormPopup({ onClose }: FormPopupProps) {
           </div>
 
           {/* panel del formulario */}
-          <div className="flex-9 shrink-0 max-lg:flex-none">
+          <div className="flex-10 shrink-0 max-lg:flex-none">
             <div className="flex h-full flex-col gap-[40px] px-[23px] pb-[56px] pt-[41px] short:gap-[16px] short:pb-[24px] short:pt-[24px] max-lg:gap-[28px] max-lg:px-[20px] max-lg:pb-[48px] max-lg:pt-[28px] md:max-lg:px-[48px]">
               <div className="flex w-full max-w-[640px] flex-1 flex-col justify-center">
                 {/* formulario */}

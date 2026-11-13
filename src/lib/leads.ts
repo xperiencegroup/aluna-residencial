@@ -4,7 +4,7 @@
  * Mientras tanto las funciones simulan el envío y solo guardan el lead en localStorage,
  * así los componentes no cambian cuando se conecte el backend.
  */
-import type { DatosLead, ResultadoRegistro } from "@/types/xperience-form";
+import type { DatosLead } from "@/types/xperience-form";
 // import folletoPdf from "@/assets/fichas/Senderos de Aluna _ Brochure comercial.pdf";
 
 /** Apagar mientras se configura HubSpot: los formularios no se abren. */
@@ -16,12 +16,9 @@ const VIGENCIA_MS = DIAS_VIGENCIA * 24 * 60 * 60 * 1000;
 
 /** Folleto comercial */
 export const FOLLETO_URL = "";
-export const NOMBRE_FOLLETO = "Folleto comercial Senderos de Aluna.pdf";
+export const NOMBRE_FOLLETO = "Folleto comercial Aluna Residencial.pdf";
 
-const KEY = "senderos_de_aluna_onepager_lead";
-
-/** URL de la app Click & Xperience (siguiente paso del onboarding) */
-export const CX_URL = "https://senderos.aluna.gt";
+const KEY = "aluna_residencial_lead";
 
 /** TODO: URL del aviso de privacidad (pendiente) */
 export const AVISO_PRIVACIDAD_URL = "#";
@@ -66,15 +63,6 @@ function guardarLead(lead: LeadGuardado) {
 }
 
 const esperar = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
-/** Onboarding Xperience (pasos 1 y 2) */
-export async function registrarOnboarding(
-  datos: DatosLead & { interes: boolean },
-): Promise<ResultadoRegistro> {
-  guardarLead({ ...getLeadGuardado(), ...datos });
-  await esperar(500); // simulación
-  return { folio: null, whatsappEnviado: false, correoEnviado: false };
-}
 
 /** Formulario del folleto comercial */
 export async function solicitarFolleto(datos: DatosLead): Promise<void> {

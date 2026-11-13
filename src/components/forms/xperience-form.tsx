@@ -6,8 +6,10 @@ import PillButton from "@/components/pill-button";
 import {
   Field,
   PhoneField,
+  apellidosRules,
   correoRules,
   inputClass,
+  nombreRules,
 } from "@/components/forms/fields";
 
 // icons
@@ -18,21 +20,11 @@ import mailIcon from "@/assets/icons/form/mail-icon.svg";
 // logica
 import { getLeadGuardado, solicitarFolleto } from "@/lib/leads";
 
-// tracking
-
-// constantes
-import { CLICK_AND_XPERIENCE_URL } from "@/const/click-and-xperience";
-
 type Values = {
-  nombreCompleto: string;
+  nombre: string;
+  apellidos: string;
   correo: string;
   telefono: string;
-};
-
-const nombreCompletoRules = {
-  required: "Escribe tu nombre y apellido",
-  validate: (v: string) =>
-    v.trim().split(/\s+/).length >= 2 || "Escribe tu nombre y apellido",
 };
 
 const labelClass = "caption font-medium text-proposito";
@@ -49,9 +41,8 @@ export default function XperienceForm() {
   } = useForm<Values>({
     mode: "onTouched",
     defaultValues: {
-      nombreCompleto: [guardado?.nombre, guardado?.apellidos]
-        .filter(Boolean)
-        .join(" "),
+      nombre: guardado?.nombre ?? "",
+      apellidos: guardado?.apellidos ?? "",
       correo: guardado?.correo ?? "",
       telefono: "",
     },
@@ -61,17 +52,12 @@ export default function XperienceForm() {
     try {
       setError(false);
 
-      // "Nombre completo" se separa en nombre (primera palabra) y apellidos (el resto)
-      const [nombre, ...resto] = v.nombreCompleto.trim().split(/\s+/);
-
       await solicitarFolleto({
-        nombre,
-        apellidos: resto.join(" "),
+        nombre: v.nombre.trim(),
+        apellidos: v.apellidos.trim(),
         correo: v.correo.trim(),
         telefono: v.telefono,
       });
-
-      window.location.assign(CLICK_AND_XPERIENCE_URL);
     } catch {
       setError(true);
     }
@@ -81,72 +67,93 @@ export default function XperienceForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="flex w-full flex-col gap-[48px] short:gap-[24px] max-lg:gap-[28px]"
+      className="flex w-full flex-col gap-[38px] short:gap-[24px] max-lg:gap-[28px]"
     >
       <h2
         id="xperience-popup-title"
         className="hero-2 font-semibold text-balance text-proposito max-md:text-[30px]"
       >
-        Ingresa a Nuestra <br /> Plataforma Interactiva
+        Ingresa a Nuestra <br className="max-md:hidden" /> Plataforma
+        Interactiva
       </h2>
 
-      <div className="flex flex-col gap-[24px] short:gap-[16px]">
-        {/* nombre completo */}
-        <div className="flex flex-col gap-[8px]">
-          <label htmlFor="xp-nombre" className={labelClass}>
-            Nombre completo*
-          </label>
-          <Field
-            id="xp-nombre"
-            icon={userIcon}
-            error={errors.nombreCompleto?.message}
-          >
-            <input
-              id="xp-nombre"
-              type="text"
-              autoComplete="name"
-              placeholder="Tu nombre y apellido"
-              aria-invalid={!!errors.nombreCompleto}
-              aria-describedby={
-                errors.nombreCompleto ? "xp-nombre-error" : undefined
-              }
-              className={inputClass}
-              {...register("nombreCompleto", nombreCompletoRules)}
-            />
-          </Field>
-        </div>
-
+      <div className="flex flex-col gap-[12px] short:gap-[8px]">
+        {/* nombre y apellidos */}
         <div className="grid grid-cols-1 gap-[24px] short:gap-[16px] md:grid-cols-2 md:gap-[16px]">
-          {/* correo */}
+          {/* nombre */}
           <div className="flex flex-col gap-[8px]">
-            <label htmlFor="xp-correo" className={labelClass}>
-              Correo*
+            <label htmlFor="xp-nombre" className={labelClass}>
+              Nombre*
             </label>
             <Field
-              id="xp-correo"
-              icon={mailIcon}
-              error={errors.correo?.message}
+              id="xp-nombre"
+              icon={userIcon}
+              error={errors.nombre?.message}
             >
               <input
-                id="xp-correo"
-                type="email"
-                autoComplete="email"
-                placeholder="tu@correo.com"
-                aria-invalid={!!errors.correo}
-                aria-describedby={errors.correo ? "xp-correo-error" : undefined}
+                id="xp-nombre"
+                type="text"
+                autoComplete="given-name"
+                placeholder="Tu nombre"
+                aria-invalid={!!errors.nombre}
+                aria-describedby={errors.nombre ? "xp-nombre-error" : undefined}
                 className={inputClass}
-                {...register("correo", correoRules)}
+                {...register("nombre", nombreRules)}
               />
             </Field>
           </div>
 
-          {/* teléfono */}
+          {/* apellidos */}
           <div className="flex flex-col gap-[8px]">
-            <label htmlFor="xp-telefono" className={labelClass}>
-              Teléfono*
+            <label htmlFor="xp-apellidos" className={labelClass}>
+              Apellidos*
             </label>
-            <PhoneField control={control} name="telefono" id="xp-telefono" />
+            <Field
+              id="xp-apellidos"
+              icon={userIcon}
+              error={errors.apellidos?.message}
+            >
+              <input
+                id="xp-apellidos"
+                type="text"
+                autoComplete="family-name"
+                placeholder="Tus apellidos"
+                aria-invalid={!!errors.apellidos}
+                aria-describedby={
+                  errors.apellidos ? "xp-apellidos-error" : undefined
+                }
+                className={inputClass}
+                {...register("apellidos", apellidosRules)}
+              />
+            </Field>
           </div>
+        </div>
+
+        {/* correo */}
+        <div className="flex flex-col gap-[8px]">
+          <label htmlFor="xp-correo" className={labelClass}>
+            Correo*
+          </label>
+          <Field id="xp-correo" icon={mailIcon} error={errors.correo?.message}>
+            <input
+              id="xp-correo"
+              type="email"
+              autoComplete="email"
+              placeholder="tu@correo.com"
+              aria-invalid={!!errors.correo}
+              aria-describedby={errors.correo ? "xp-correo-error" : undefined}
+              className={inputClass}
+              {...register("correo", correoRules)}
+            />
+          </Field>
+        </div>
+
+        {/* teléfono */}
+        <div className="flex flex-col gap-[8px]">
+          <label htmlFor="xp-telefono" className={labelClass}>
+            Teléfono*
+          </label>
+          <PhoneField control={control} name="telefono" id="xp-telefono" />
         </div>
 
         {/* confirmar */}
