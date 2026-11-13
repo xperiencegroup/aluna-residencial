@@ -26,8 +26,8 @@ export default function PlanoConjunto() {
   return (
     <section className="flex flex-col justify-center items-center min-h-svh w-full bg-beige">
       {/* explora plano de conjunto */}
-      <div className="relative flex w-full h-full justify-center items-center">
-        <div className="relative flex w-full max-w-[1280px] min-h-svh flex-col items-center justify-center gap-8 py-12 lg:min-h-[340px] lg:flex-row lg:py-0">
+      <div className="relative flex w-full h-full justify-center items-center xl:grow">
+        <div className="relative flex w-full max-w-[1280px] lg:min-h-[340px] min-h-svh flex-col items-center justify-center gap-8 py-12 lg:flex-row lg:py-0">
           {/* text */}
           <div className="flex flex-col items-center justify-center gap-[13px] text-center lg:shrink-0">
             <p className="subtitle text-proposito uppercase">
@@ -41,7 +41,7 @@ export default function PlanoConjunto() {
               Icon={PlanoIcon}
               onClick={handleClickPlanoConjunto}
               base="bg-beige border-proposito text-proposito"
-              className="w-[204px]"
+              className="w-[204px] xl:w-[220px]"
             >
               Plano de Conjunto
             </PillButton>
@@ -76,7 +76,7 @@ export default function PlanoConjunto() {
         />
 
         {/* texts and button */}
-        <div className="relative flex w-full max-w-[720px] flex-col items-center gap-8 text-center text-beige md:gap-10 lg:gap-[50px]">
+        <div className="relative flex w-full flex-col items-center gap-8 text-center text-beige md:gap-10 lg:gap-[50px]">
           <div className="flex flex-col gap-4 lg:gap-[20px]">
             <h2 className="hero-2 font-semibold text-balance">
               Regístrate y conoce{" "}
@@ -85,14 +85,20 @@ export default function PlanoConjunto() {
               </span>
             </h2>
 
-            <div className="paragraph mx-auto flex max-w-[60ch] flex-col gap-4">
+            <div className="paragraph mx-auto flex max-w-[880px] flex-col gap-4">
               <p>
-                Un desarrollo residencial en Villa Nueva, Guatemala con una
-                propuesta de vivienda horizontal dentro de condominio, seguridad
-                24/7 y áreas verdes que invitan a la convivencia.
+                Un desarrollo residencial en{" "}
+                <span className="font-semibold italic">
+                  Villa Nueva, Guatemala
+                </span>{" "}
+                con una propuesta de vivienda horizontal dentro de condominio,
+                seguridad 24/7 y áreas verdes que invitan a la convivencia.
               </p>
               <p>
-                El proyecto está conformado por 164 lotes y 3 modelos de casas
+                El proyecto está conformado por{" "}
+                <span className="font-semibold italic">
+                  164 lotes y 3 modelos de casas
+                </span>{" "}
                 que se adaptan a distintos estilos de vida.
               </p>
               <p>
