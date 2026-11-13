@@ -1,43 +1,14 @@
-import { useState, type ComponentType, type SVGProps } from "react";
+import { useState } from "react";
 
 // icons
-import zonaEventos from "@/assets/icons/components/amenidades/eventos-icon";
-import areaMascotas from "@/assets/icons/components/amenidades/mascotas-icon";
-import canchaPolideportiva from "@/assets/icons/components/amenidades/cancha-icon";
-import juegosInfantiles from "@/assets/icons/components/amenidades/juegos-icon";
-import cicloviaInfantil from "@/assets/icons/components/amenidades/ciclovia-icon";
-import churrasqueras from "@/assets/icons/components/amenidades/churrasqueras-icon";
 import FillButton from "@/components/fill-button";
 import PillButton from "@/components/pill-button";
 import DownloadIcon from "@/assets/icons/components/download-icon";
 import { useSearchParams } from "react-router";
 
-type Amenidad = {
-  id: string;
-  label: string;
-  Icon: ComponentType<SVGProps<SVGSVGElement>>;
-};
-
-const amenidades: Amenidad[] = [
-  { id: "zona-eventos", label: "Zona de Eventos", Icon: zonaEventos },
-  { id: "area-mascotas", label: "Área de Mascotas", Icon: areaMascotas },
-  {
-    id: "cancha-polideportiva",
-    label: "Cancha Polideportiva",
-    Icon: canchaPolideportiva,
-  },
-  {
-    id: "juegos-infantiles",
-    label: "Juegos Infantiles",
-    Icon: juegosInfantiles,
-  },
-  {
-    id: "ciclovia-infantil",
-    label: "Ciclovía Infantil",
-    Icon: cicloviaInfantil,
-  },
-  { id: "churrasqueras", label: "Churrasqueras", Icon: churrasqueras },
-];
+import { amenidades, type Amenidad } from "@/data/amenidades";
+import { MotionConfig } from "motion/react";
+import { AmenidadImage } from "./amenidad-image/amenidad-image";
 
 export default function Amenidades() {
   const [selected, setSelected] = useState(amenidades[0]);
@@ -108,48 +79,49 @@ export default function Amenidades() {
         </div>
 
         {/* images */}
-        <div className="grid w-full max-w-[1220px] gap-4 lg:grid-cols-[637fr_560fr] lg:gap-[22px]">
-          {/* imagen mas grande */}
-          <div className="relative aspect-[637/403] w-full overflow-hidden rounded-tl-[120px] bg-red-400 md:rounded-tl-[200px] lg:rounded-tl-[280px]">
-            <img
-              src=""
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-
-          {/* imagenes pequeñas */}
-          <div className="grid gap-4 lg:grid-rows-[174fr_213fr]">
-            {/* imagen mediana */}
-            <div className="relative aspect-[16/7] w-full overflow-hidden bg-cyan-500 lg:aspect-auto">
-              <img
-                src=""
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover"
+        <MotionConfig reducedMotion="user">
+          <div className="grid w-full max-w-[1220px] gap-4 lg:grid-cols-[637fr_560fr] lg:gap-[22px]">
+            {/* imagen mas grande */}
+            <div className="relative aspect-[637/403] w-full overflow-hidden rounded-tl-[120px] bg-proposito/10 md:rounded-tl-[200px] lg:rounded-tl-[280px]">
+              <AmenidadImage
+                src={selected.images[0]}
+                alt={`${selected.label}, foto 1`}
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {/* imagen pequeña 1 */}
-              <div className="relative aspect-[272/213] overflow-hidden bg-green-700 lg:aspect-auto">
-                <img
-                  src=""
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
+            {/* imagenes pequeñas */}
+            <div className="grid gap-4 lg:grid-rows-[174fr_213fr]">
+              {/* imagen mediana */}
+              <div className="relative aspect-[16/7] w-full overflow-hidden bg-proposito/10 lg:aspect-auto">
+                <AmenidadImage
+                  src={selected.images[1]}
+                  alt={`${selected.label}, foto 2`}
+                  delay={0.08}
                 />
               </div>
 
-              {/* imagen pequeña 2 */}
-              <div className="relative aspect-[272/213] overflow-hidden bg-green-900 lg:aspect-auto">
-                <img
-                  src=""
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
+              <div className="grid grid-cols-2 gap-4">
+                {/* imagen pequeña 1 */}
+                <div className="relative aspect-[272/213] overflow-hidden bg-proposito/10 lg:aspect-auto">
+                  <AmenidadImage
+                    src={selected.images[2]}
+                    alt={`${selected.label}, foto 3`}
+                    delay={0.16}
+                  />
+                </div>
+
+                {/* imagen pequeña 2 */}
+                <div className="relative aspect-[272/213] overflow-hidden bg-proposito/10 lg:aspect-auto">
+                  <AmenidadImage
+                    src={selected.images[3]}
+                    alt={`${selected.label}, foto 4`}
+                    delay={0.24}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </MotionConfig>
 
         {/* download brochure */}
         <FillButton
