@@ -7,7 +7,7 @@ import DownloadIcon from "@/assets/icons/components/download-icon";
 import { useSearchParams } from "react-router";
 
 import { amenidades, type Amenidad } from "@/data/amenidades";
-import { MotionConfig } from "motion/react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { AmenidadImage } from "./amenidad-image/amenidad-image";
 
 export default function Amenidades() {
@@ -76,6 +76,25 @@ export default function Amenidades() {
               );
             })}
           </ul>
+
+          {/* nombre de la amenidad seleccionada */}
+          <div
+            aria-live="polite"
+            className="relative h-[1.5em] w-full overflow-hidden text-center"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.p
+                key={selected.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="subtitle font-semibold text-proposito"
+              >
+                {selected.label}
+              </motion.p>
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* images */}
