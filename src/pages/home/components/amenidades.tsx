@@ -9,6 +9,7 @@ import { useSearchParams } from "react-router";
 import { amenidades, type Amenidad } from "@/data/amenidades";
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { AmenidadImage } from "./amenidad-image/amenidad-image";
+import { getLeadGuardado } from "@/lib/leads";
 
 export default function Amenidades() {
   const [selected, setSelected] = useState(amenidades[0]);
@@ -20,6 +21,9 @@ export default function Amenidades() {
   };
 
   const onRecorrido = () => {
+    // si ya se hizo el form antes, se lo salta
+    if (getLeadGuardado()) return;
+
     setSearchParams({ form: "xperience" }, { state: { origen: "brochure" } });
   };
   return (

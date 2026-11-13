@@ -8,6 +8,7 @@ import logoDecoration from "@/assets/icons/logo-decoration-explora.svg";
 import AlunaIcon from "@/assets/icons/components/aluna-icon";
 import ClickIcon from "@/assets/icons/components/click-icon";
 import { useSearchParams } from "react-router";
+import { getLeadGuardado } from "@/lib/leads";
 
 export default function ExploraCX() {
   const [, setSearchParams] = useSearchParams();
@@ -15,6 +16,11 @@ export default function ExploraCX() {
   const ORIGEN = "explora";
 
   const onRecorrido = () => {
+    // si ya se hizo el form antes, se lo salta
+    if (getLeadGuardado()) {
+      return;
+    }
+
     setSearchParams({ form: "xperience" }, { state: { origen: ORIGEN } });
   };
   return (

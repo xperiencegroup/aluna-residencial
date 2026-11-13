@@ -29,7 +29,7 @@ type Values = {
 
 const labelClass = "caption font-medium text-proposito";
 
-export default function XperienceForm() {
+export default function XperienceForm({ onClose }: { onClose: () => void }) {
   const [error, setError] = useState(false);
   const guardado = getLeadGuardado();
 
@@ -58,6 +58,8 @@ export default function XperienceForm() {
         correo: v.correo.trim(),
         telefono: v.telefono,
       });
+
+      onClose();
     } catch {
       setError(true);
     }

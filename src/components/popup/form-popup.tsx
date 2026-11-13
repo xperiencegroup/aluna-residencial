@@ -117,7 +117,7 @@ export default function FormPopup({ onClose }: FormPopupProps) {
             <div className="flex h-full flex-col gap-[40px] px-[23px] pb-[56px] pt-[41px] short:gap-[16px] short:pb-[24px] short:pt-[24px] max-lg:gap-[28px] max-lg:px-[20px] max-lg:pb-[48px] max-lg:pt-[28px] md:max-lg:px-[48px]">
               <div className="flex w-full max-w-[640px] flex-1 flex-col justify-center">
                 {/* formulario */}
-                <XperienceForm />
+                <XperienceForm onClose={onClose} />
               </div>
             </div>
           </div>

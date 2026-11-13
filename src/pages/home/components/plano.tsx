@@ -11,11 +11,17 @@ import ClickIcon from "@/assets/icons/components/click-icon";
 import AlunaIcon from "@/assets/icons/components/aluna-icon";
 import PillButton from "@/components/pill-button";
 import PlanoIcon from "@/assets/icons/components/plano-icon";
+import { getLeadGuardado } from "@/lib/leads";
 
 export default function PlanoConjunto() {
   const [, setSearchParams] = useSearchParams();
 
   const onRecorrido = () => {
+    // si ya se hizo el form antes, se lo salta
+    if (getLeadGuardado()) {
+      return;
+    }
+
     setSearchParams({ form: "xperience" }, { state: { origen: "plano" } });
   };
 
