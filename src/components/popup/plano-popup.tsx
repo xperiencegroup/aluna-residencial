@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import masterplanImageH from "@/assets/images/plano-conjunto.png";
 import AlunaIcon from "@/assets/icons/components/aluna-icon";
 import { useLockBodyScroll } from "@/hooks/use-lock-body-scroll";
+import CloseIcon from "@/assets/icons/components/close-icon";
 
 type PlanoPopupProps = {
   onClose: () => void;
@@ -65,19 +66,9 @@ export default function PlanoPopup({ onClose }: PlanoPopupProps) {
           type="button"
           onClick={onClose}
           aria-label="Cerrar"
-          className="absolute right-3 top-3 flex size-[36px] items-center justify-center rounded-full border-[1.5px] border-beige text-beige transition-opacity hover:cursor-pointer hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-beige sm:right-4 sm:top-4 sm:size-[44px]"
+          className="group absolute right-3 top-3 z-10 flex size-[44px] items-center justify-center rounded-full border-2 border-horizonte bg-proposito drop-shadow transition-colors duration-100 hover:cursor-pointer hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-horizonte active:border-proposito active:bg-horizonte active:opacity-100 sm:right-4 sm:top-4 min-[1440px]:size-[52px]"
         >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            aria-hidden="true"
-            className="size-5"
-          >
-            <path d="M6 6l12 12M18 6L6 18" />
-          </svg>
+          <CloseIcon className="size-[20px] text-horizonte group-active:text-proposito min-[1440px]:size-[24px]" />
         </button>
 
         {/* plano */}
