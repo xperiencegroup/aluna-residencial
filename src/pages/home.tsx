@@ -10,11 +10,15 @@ import PlanoConjunto from "./home/components/plano";
 import Ubicacion from "./home/components/ubicacion";
 import { useSearchParams } from "react-router";
 import FormPopup from "@/components/popup/form-popup";
+import ModelPopup from "@/components/popup/model-popup";
+import { modelos } from "@/data/modelos";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const popup = searchParams.get("popup");
   const form = searchParams.get("form");
+  const modeloId = searchParams.get("modelo");
+  const modelo = modelos.find((m) => m.id === modeloId);
 
   const cerrar = (param: string) => {
     setSearchParams(
@@ -38,6 +42,13 @@ export default function Home() {
       <Cotiza />
       <Ubicacion />
       <FHA />
+
+      {modelo && (
+        <ModelPopup
+          modelo={modelo}
+          onClose={() => setSearchParams({}, { replace: true })}
+        />
+      )}
 
       {popup === "plano-conjunto" && (
         <PlanoPopup onClose={() => cerrar("popup")} />
