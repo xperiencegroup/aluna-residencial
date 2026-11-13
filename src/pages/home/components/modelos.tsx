@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router";
 import ModeloCard from "./modelo-card/modelo-card";
-import { modelos } from "@/data/modelos";
+import { modelos, type Modelo } from "@/data/modelos";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import InfiniteCarousel from "@/components/carousel/infinite-carousel";
 
@@ -9,7 +9,7 @@ export default function Modelos() {
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
-  const abrirModelo = (modelo) => {
+  const abrirModelo = (modelo: Modelo) => {
     setParams({ modelo: modelo.id });
   };
   return (

@@ -6,6 +6,11 @@ import jardinIcon from "@/assets/icons/modelo/jardin.svg";
 import lavanderiaIcon from "@/assets/icons/modelo/lavanderia.svg";
 import salaIcon from "@/assets/icons/modelo/sala.svg";
 
+// portadas
+import portadaA70 from "@/assets/images/modelos/70/portada.jpg";
+import portadaA90 from "@/assets/images/modelos/90/portada.jpg";
+import portadaA100 from "@/assets/images/modelos/100/portada.jpg";
+
 // plantas
 import A70P1 from "@/assets/images/modelos/70/ALUNA-70-PLANTA-01.png";
 import A70P2 from "@/assets/images/modelos/70/ALUNA-70-PLANTA-02.png";
@@ -30,6 +35,7 @@ export type Modelo = {
   label: string;
   modalLabel: string;
   descripcion: string;
+  portada: string;
   niveles: Nivel[];
 };
 
@@ -40,6 +46,7 @@ export const modelos: Modelo[] = [
     modalLabel: "Modelo 70",
     descripcion:
       "Modelo funcional y eficiente, ideal como primera inversión o para familias jóvenes.",
+    portada: portadaA70,
     niveles: [
       {
         titulo: "Primer nivel",
@@ -69,6 +76,7 @@ export const modelos: Modelo[] = [
     modalLabel: "Modelo 90",
     descripcion:
       "Un equilibrio entre amplitud y funcionalidad, ideal para familias en crecimiento o quienes requieren un espacio de trabajo en casa.",
+    portada: portadaA90,
     niveles: [
       {
         titulo: "Primer nivel",
@@ -99,6 +107,7 @@ export const modelos: Modelo[] = [
     modalLabel: "Modelo 100",
     descripcion:
       "Modelo funcional y eficiente, ideal como primera inversión o para familias jóvenes.",
+    portada: portadaA100,
     niveles: [
       {
         titulo: "Primer nivel",

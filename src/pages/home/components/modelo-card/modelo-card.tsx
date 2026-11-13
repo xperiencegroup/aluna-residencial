@@ -1,33 +1,35 @@
 import ArrowIcon from "@/assets/icons/components/arrow-icon";
 import FormaModelo from "@/assets/images/forma-modelo";
+import type { Modelo } from "@/data/modelos";
 
-export default function ModeloCard({ modelo, onOpen }) {
-  const isGreen = modelo.variant === "green";
+interface ModeloCardProps {
+  modelo: Modelo;
+  onOpen: (modelo: Modelo) => void;
+}
 
+export default function ModeloCard({ modelo, onOpen }: ModeloCardProps) {
   return (
     <div className="relative w-[290px] h-[427px] lg:w-[246.5px] lg:h-[363px] xl:w-[290px] xl:h-[427px] min-[1440px]:w-[340px] min-[1440px]:h-[500px] min-[1920px]:w-[400px] min-[1920px]:h-[590px] max-md:w-[260px] max-md:h-[383px] rounded-t-full overflow-hidden bg-proposito drop-shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-1.5">
       <img
-        src={modelo.image}
-        alt={`Imagen frontal del modelo Aluna ${modelo.numero}`}
+        src={modelo.portada}
+        alt={`Imagen frontal del modelo ${modelo.label}`}
         draggable={false}
         className="absolute inset-0 size-full object-cover"
       />
 
       <div className="relative z-10 flex flex-col size-full justify-end">
-        <FormaModelo
-          className={`absolute bottom-0 w-full h-auto ${isGreen ? "text-proposito" : "text-beige"}`}
-        />
+        <FormaModelo className={`absolute bottom-0 w-full h-auto text-beige`} />
 
         <div className="relative z-20 flex w-full h-[43px] items-center justify-between px-[20px] lg:px-[8px] xl:px-[20px] mb-[15px]">
           <p
-            className={`modelo-title font-bold uppercase whitespace-nowrap max-md:text-[28px] ${isGreen ? "text-horizonte" : "text-proposito"}`}
+            className={`modelo-title font-bold uppercase whitespace-nowrap max-md:text-[28px] text-proposito`}
           >
             {modelo.label}
           </p>
 
           <button
             type="button"
-            aria-label={`Ver modelo Aluna ${modelo.numero}`}
+            aria-label={`Ver modelo ${modelo.label}`}
             onClick={() => onOpen(modelo)}
             className="shrink-0 group flex size-[38px] justify-center items-center rounded-full drop-shadow border-1 border-beige bg-proposito transition-opacity hover:cursor-pointer hover:opacity-60 active:opacity-100 active:bg-beige active:border-proposito"
           >
